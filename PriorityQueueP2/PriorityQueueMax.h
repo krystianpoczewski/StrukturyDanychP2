@@ -9,8 +9,7 @@ struct Element {
 class PriorityQueueMax
 {
 private:
-    virtual void IncreaseKey(int oldPriority, int newPriority) = 0;
-    virtual void DecreaseKey(int oldPriority, int newPriority) = 0;
+
 public:
     PriorityQueueMax() {}
     virtual ~PriorityQueueMax() {}

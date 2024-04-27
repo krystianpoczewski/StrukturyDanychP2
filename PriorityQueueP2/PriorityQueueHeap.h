@@ -1,9 +1,8 @@
 #pragma once
-
-#include "PriorityQueueMax.h"
 #include <vector>
+#include "PriorityQueueMax.h"
 
-class PriorityQueueDynamicArray : public PriorityQueueMax
+class PriorityQueueHeap : public PriorityQueueMax
 {
 private:
     std::vector<Element> _queue;
@@ -11,8 +10,8 @@ private:
 
 
 public:
-    PriorityQueueDynamicArray();
-    ~PriorityQueueDynamicArray();
+    PriorityQueueHeap();
+    ~PriorityQueueHeap();
 
     void Insert(int value, int priority) override;
     Element ExtractMax() override;
@@ -22,3 +21,4 @@ public:
     int GetSize() const override;
     void PrintAll() const;
 };
+

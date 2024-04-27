@@ -128,11 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="PriorityQueueDynamicArray.cpp" />
+    <ClCompile Include="PriorityQueueHeap.cpp" />
     <ClCompile Include="PriorityQueueMax.cpp" />
     <ClCompile Include="PriorityQueueP2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PriorityQueueDynamicArray.h" />
+    <ClInclude Include="PriorityQueueHeap.h" />
     <ClInclude Include="PriorityQueueMax.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
