@@ -1,8 +1,7 @@
 #include <iostream>
 #include "PriorityQueueDynamicArray.h"
 #include "PriorityQueueMax.h"
-#include "MaxHeap.h"
-
+#include "PriorityQueueHeap.h"
 int main()
 {
     /*PriorityQueueDynamicArray priorityQueue;
@@ -26,8 +25,7 @@ int main()
     Element extracted = priorityQueue.ExtractMax();
     std::cout << "Extracted max: " << "Priority: " << extracted.priority << ", Value: " << extracted.value << std::endl;*/
 
-
-    MaxHeap maxHeap;
+    PriorityQueueHeap maxHeap;
 
     // Insert elements into the heap
     maxHeap.Insert(5, 50);
@@ -36,7 +34,7 @@ int main()
     maxHeap.Insert(2, 20);
     maxHeap.Insert(6, 60);
 
-    std::cout << "Heap size after insertion: " << maxHeap.GetSize() << std::endl;
+    //std::cout << "Heap size after insertion: " << maxHeap.GetSize() << std::endl;
 
     // Print all elements in the heap
     std::cout << "All elements in the heap:" << std::endl;
@@ -47,7 +45,7 @@ int main()
     std::cout << "Extracted maximum element: Priority=" << maxElement.priority << ", Value=" << maxElement.value << std::endl;
 
     // Get the maximum element without removing it
-    Element currentMax = maxHeap.GetMax();
+    Element currentMax = maxHeap.Peek();
     std::cout << "Current maximum element: Priority=" << currentMax.priority << ", Value=" << currentMax.value << std::endl;
 
     // Print all elements in the heap after extraction
@@ -55,6 +53,17 @@ int main()
     maxHeap.PrintAll();
     std::cout << std::endl;
     maxHeap.Insert(2, 60);
+    maxHeap.PrintAll();
+    std::cout << std::endl;
+    maxHeap.Insert(5, 1);
+    maxHeap.Insert(3, 2);
+    maxHeap.Insert(8, 3);
+    maxHeap.Insert(2, 100);
+    maxHeap.Insert(6, 0);
+    maxHeap.PrintAll();
+    std::cout << std::endl;
+    maxHeap.ModifyKey(1, 100);
+    maxHeap.Insert(6, 1000);
     maxHeap.PrintAll();
     return 0;
 }

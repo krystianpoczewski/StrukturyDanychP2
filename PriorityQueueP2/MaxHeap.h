@@ -19,7 +19,7 @@ public:
 
 	void Insert(int priority, int value);
 	Element ExtractMax();
-	Element GetMax() const;
+	Element& Peek();
 
 	int GetSize() const;
 	bool isEmpty() const;

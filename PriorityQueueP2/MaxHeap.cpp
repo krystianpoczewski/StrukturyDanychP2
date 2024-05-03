@@ -83,7 +83,7 @@ Element MaxHeap::ExtractMax()
 	return maximumElement; // Zwrocenie usunietego elementu
 }
 
-Element MaxHeap::GetMax() const
+Element& MaxHeap::Peek()
 {
 	return _heap[1];
 }
