@@ -88,7 +88,7 @@ void PriorityQueueHeap::Insert(int value, int priority)
 Element PriorityQueueHeap::ExtractMax()
 {
 	if (isEmpty()) {
-		throw std::runtime_error::runtime_error("Heap is empty!");
+		throw std::out_of_range("The priority queue is empty");
 	}
 
 	Element maximumElement = _heap[1];
@@ -103,7 +103,7 @@ Element PriorityQueueHeap::ExtractMax()
 Element& PriorityQueueHeap::Peek()
 {
 	if (isEmpty()) {
-		throw std::runtime_error::runtime_error("Heap is empty!");
+		throw std::out_of_range("The priority queue is empty");
 	}
 	return _heap[1];
 }
@@ -111,7 +111,7 @@ Element& PriorityQueueHeap::Peek()
 void PriorityQueueHeap::ModifyKey(int oldPriority, int newPriority)
 {
 	if (isEmpty()) {
-		std::cout << "Heap is empty!" << std::endl;
+		std::cout << "The priority queue is empty" << std::endl;
 		return;
 	}
 	if (oldPriority == newPriority) {
@@ -142,6 +142,10 @@ int PriorityQueueHeap::GetSize() const
 
 void PriorityQueueHeap::PrintAll()
 {
+	if (isEmpty()) {
+		std::cout << "The priority queue is empty" << std::endl;
+		return;
+	}
 	std::cout << "Size of heap: " << _size << std::endl;
 	for (int i = 1; i <= _size; i++) {
 		if (leftChildOf(i) > _size && rightChildOf(i) > _size)

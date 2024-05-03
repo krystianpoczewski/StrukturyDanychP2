@@ -33,10 +33,7 @@ void PriorityQueueDynamicArray::Insert(int value, int priority)
 Element PriorityQueueDynamicArray::ExtractMax()
 {
 	if (isEmpty()) {
-		std::cout << "The priority queue is empty" << std::endl;
-		Element wrongElement(-1, -1);
-		return wrongElement;
-		//Zwrocenie elementu o wartosci wskazujacej na error
+		throw std::out_of_range("The priority queue is empty");
 	}
 	//Usuniecie ostatniego elementu i zwrocenie jego wartosci
 	Element elementExtracted = _queue[_size - 1];
@@ -48,15 +45,17 @@ Element PriorityQueueDynamicArray::ExtractMax()
 Element& PriorityQueueDynamicArray::Peek()
 {
 	if (isEmpty()) {
-		std::cout << "The priority queue is empty" << std::endl;
-		Element wrongElement(-1, -1);
-		return wrongElement;
+		throw std::out_of_range("The priority queue is empty");
 	}
 	return _queue[_size - 1];
 }
 
 void PriorityQueueDynamicArray::ModifyKey(int oldPriority, int newPriority)
 {
+	if (isEmpty()) {
+		std::cout << "The priority queue is empty" << std::endl;
+		return;
+	}
 	if (newPriority == oldPriority) {
 		std::cout << "New priority is equal to old priority. No change needed." << std::endl;
 		return;

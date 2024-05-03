@@ -1,6 +1,5 @@
 #pragma once
 #include "PriorityQueueMax.h"
-#include "MaxHeap.h"
 #include <vector>
 
 class PriorityQueueHeap : public PriorityQueueMax
