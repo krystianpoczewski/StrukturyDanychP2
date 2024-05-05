@@ -131,11 +131,13 @@
     <ClCompile Include="PriorityQueueHeap.cpp" />
     <ClCompile Include="PriorityQueueMax.cpp" />
     <ClCompile Include="PriorityQueueP2.cpp" />
+    <ClCompile Include="TablicaDynamiczna.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PriorityQueueDynamicArray.h" />
     <ClInclude Include="PriorityQueueHeap.h" />
     <ClInclude Include="PriorityQueueMax.h" />
+    <ClInclude Include="TablicaDynamiczna.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

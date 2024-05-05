@@ -1,11 +1,11 @@
 #pragma once
 #include "PriorityQueueMax.h"
-#include <vector>
+#include "TablicaDynamiczna.h"
 
 class PriorityQueueHeap : public PriorityQueueMax
 {
 private:
-    std::vector<Element> _heap;
+    TablicaDynamiczna* _heap;
     int _size;
 
     int parentOf(int index);

@@ -13,19 +13,19 @@ void PriorityQueueDynamicArray::binary_search(int priority, int* firstBigger, in
 
 	while (low <= high) {
 		int mid = (low + high) / 2;
-		if (_queue[mid].priority == priority) {
+		if (_queue->GetAt(mid).priority == priority) {
 			int i = mid;
 			int j = mid;
-			while (i >= 0 && _queue[i].priority == _queue[mid].priority) {
+			while (i >= 0 && _queue->GetAt(i).priority == _queue->GetAt(mid).priority) {
 				*lastLower = --i;
 			}
-			while (j < _size && _queue[j].priority == _queue[mid].priority) {
+			while (j < _size && _queue->GetAt(j).priority == _queue->GetAt(mid).priority) {
 				*firstBigger = ++j;
 			}
 			*foundIndex = *firstBigger - 1;
 			return;
 		}
-		else if (_queue[mid].priority < priority) {
+		else if (_queue->GetAt(mid).priority < priority) {
 			low = mid + 1;
 			*lastLower = mid;
 		}
@@ -39,11 +39,12 @@ void PriorityQueueDynamicArray::binary_search(int priority, int* firstBigger, in
 PriorityQueueDynamicArray::PriorityQueueDynamicArray()
 {
 	_size = 0;
+	_queue = new TablicaDynamiczna();
 }
 
 PriorityQueueDynamicArray::~PriorityQueueDynamicArray()
 {
-
+	delete[] _queue;
 }
 
 void PriorityQueueDynamicArray::Insert(int value, int priority)
@@ -52,7 +53,7 @@ void PriorityQueueDynamicArray::Insert(int value, int priority)
 
 	int firstBigger, lastLower, foundIndex;
 	binary_search(priority, &firstBigger, &lastLower, &foundIndex);
-	_queue.insert(_queue.begin() + ++lastLower, elementToInsert);
+	_queue->InsertAt(++lastLower, elementToInsert);
 	_size++;
 }
 
@@ -62,8 +63,8 @@ Element PriorityQueueDynamicArray::ExtractMax()
 		throw std::out_of_range("The priority queue is empty");
 	}
 	//Usuniecie ostatniego elementu i zwrocenie jego wartosci
-	Element elementExtracted = _queue[_size - 1];
-	_queue.pop_back();
+	Element elementExtracted = _queue->GetAt(_size - 1);
+	_queue->DeleteAt(_size - 1);
 	_size--;
 	return elementExtracted;
 }
@@ -73,7 +74,7 @@ Element& PriorityQueueDynamicArray::Peek()
 	if (isEmpty()) {
 		throw std::out_of_range("The priority queue is empty");
 	}
-	return _queue[_size - 1];
+	return _queue->GetAt(_size - 1);
 }
 
 void PriorityQueueDynamicArray::ModifyKey(int oldPriority, int newPriority)
@@ -92,8 +93,8 @@ void PriorityQueueDynamicArray::ModifyKey(int oldPriority, int newPriority)
 		std::cout << "Unable to find element with specified priority" << std::endl;
 		return;
 	}
-	int valueToInsert = _queue[foundIndexOld].value;
-	_queue.erase(_queue.begin() + foundIndexOld);
+	int valueToInsert = _queue->GetAt(foundIndexOld).value;
+	_queue->DeleteAt(foundIndexOld);
 	_size--;
 	Insert(valueToInsert, newPriority);
 
@@ -109,19 +110,14 @@ int PriorityQueueDynamicArray::GetSize() const
 	return _size;
 }
 
-void PriorityQueueDynamicArray::PrintAll() const
+void PriorityQueueDynamicArray::PrintAll()
 {
-	if (isEmpty()) {
-		std::cout << "Can't print an empty priority queue" << std::endl;
-		return;
-	}
-	for (Element el : _queue) {
-		std::cout << "Priority: " << el.priority << ", Value: " << el.value << std::endl;
-	}
+	_queue->PrintAll();
 }
 
 void PriorityQueueDynamicArray::Clear()
 {
-	_queue.clear();
+	delete _queue;
+	_queue = new TablicaDynamiczna();
 	_size = 0;
 }

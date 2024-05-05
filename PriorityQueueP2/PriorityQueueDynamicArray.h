@@ -1,12 +1,12 @@
 #pragma once
-
+#include "TablicaDynamiczna.h"
 #include "PriorityQueueMax.h"
 #include <vector>
 
 class PriorityQueueDynamicArray : public PriorityQueueMax
 {
 private:
-    std::vector<Element> _queue;
+    TablicaDynamiczna* _queue;
     int _size;
 
     void binary_search(int priority, int* firstBigger, int* lastLower, int* foundIndex);
@@ -20,6 +20,6 @@ public:
     void ModifyKey(int oldPriority, int newPriority) override;
     bool isEmpty() const override;
     int GetSize() const override;
-    void PrintAll() const;
+    void PrintAll();
     void Clear() override;
 };

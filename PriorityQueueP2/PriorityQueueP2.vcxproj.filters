@@ -27,6 +27,9 @@
     <ClCompile Include="PriorityQueueHeap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TablicaDynamiczna.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PriorityQueueMax.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PriorityQueueHeap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TablicaDynamiczna.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

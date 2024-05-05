@@ -4,6 +4,7 @@ struct Element {
     int value;
     int priority;
     Element(int value, int priority) : value(value), priority(priority) {}
+    Element() {}
 };
 
 class PriorityQueueMax
