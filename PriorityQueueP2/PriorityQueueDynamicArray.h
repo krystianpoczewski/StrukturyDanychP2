@@ -21,4 +21,5 @@ public:
     bool isEmpty() const override;
     int GetSize() const override;
     void PrintAll() const;
+    void Clear() override;
 };

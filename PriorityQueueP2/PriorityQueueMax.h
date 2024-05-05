@@ -20,4 +20,5 @@ public:
     virtual void ModifyKey(int oldPriority, int newPriority) = 0;
     virtual bool isEmpty() const = 0;
     virtual int GetSize() const = 0;
+    virtual void Clear() = 0;
 };

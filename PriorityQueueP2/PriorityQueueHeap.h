@@ -17,7 +17,6 @@ private:
 public:
     PriorityQueueHeap();
     ~PriorityQueueHeap();
-
     void Insert(int value, int priority) override;
     Element ExtractMax() override;
     Element& Peek() override;
@@ -25,5 +24,6 @@ public:
     bool isEmpty() const override;
     int GetSize() const override;
     void PrintAll();
+    void Clear() override;
 };
 

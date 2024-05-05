@@ -116,3 +116,9 @@ void PriorityQueueDynamicArray::PrintAll() const
 		std::cout << "Priority: " << el.priority << ", Value: " << el.value << std::endl;
 	}
 }
+
+void PriorityQueueDynamicArray::Clear()
+{
+	_queue.clear();
+	_size = 0;
+}

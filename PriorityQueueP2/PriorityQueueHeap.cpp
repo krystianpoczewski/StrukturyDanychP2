@@ -18,6 +18,8 @@ int PriorityQueueHeap::rightChildOf(int index)
 
 void PriorityQueueHeap::heapifyUp(int index)
 {
+	if (index > _size || index < 1)
+		return;
 	if (index == 1)
 		return; //Jest na pozycji 1, nie potrzebna zmiana pozycji
 
@@ -159,4 +161,12 @@ void PriorityQueueHeap::PrintAll()
 		}
 		std::cout << std::endl;
 	}
+}
+
+void PriorityQueueHeap::Clear()
+{
+	_heap.clear();
+	_size = 0;
+	Element firstElement(-1, -1);
+	_heap.push_back(firstElement);
 }
