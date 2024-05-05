@@ -56,15 +56,11 @@ int PriorityQueueHeap::indexOfElement(int index, int oldPriority)
 	if (index >= _size)
 		return -1;
 
-	if (_heap[index].priority == oldPriority)
-		return index;
-
-	int leftIndex = indexOfElement(leftChildOf(index), oldPriority);
-	if (leftIndex != -1)
-		return leftIndex; 
-
-	int rightIndex = indexOfElement(rightChildOf(index), oldPriority);
-	return rightIndex; 
+	for (int i = 1; i <= _size; i++) {
+		if (oldPriority == _heap[i].priority)
+			return i;
+	}
+	return -1;
 }
 
 

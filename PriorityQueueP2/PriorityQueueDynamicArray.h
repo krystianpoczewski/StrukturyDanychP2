@@ -9,7 +9,7 @@ private:
     std::vector<Element> _queue;
     int _size;
 
-
+    void binary_search(int priority, int* firstBigger, int* lastLower, int* foundIndex);
 public:
     PriorityQueueDynamicArray();
     ~PriorityQueueDynamicArray();

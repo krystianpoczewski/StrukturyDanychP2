@@ -10,9 +10,9 @@
 
 std::string GetOperationName(int operationIndex) {
 	switch (operationIndex) {
-	case 0 :
+	case 0:
 		return "Insert";
-	case 1: 
+	case 1:
 		return "Extract Max";
 	case 2:
 		return "Peek";
@@ -105,73 +105,54 @@ void Tests(PriorityQueueMax* queue, std::string fileName) {
 	file.close();
 }
 
+
 int main()
 {
 	PriorityQueueDynamicArray* priorityQueue = new PriorityQueueDynamicArray;
 	PriorityQueueHeap* priorityQueueHeap = new PriorityQueueHeap;
-	Tests(priorityQueue, "Tests Priority Queue Dynamic Array.txt");
-	Tests(priorityQueueHeap, "Tests Priority Queue Heap.txt");
-	/*PriorityQueueDynamicArray priorityQueue;
+	//Tests(priorityQueue, "Tests Priority Queue Dynamic Array2.txt");
+	//Tests(priorityQueueHeap, "Tests Priority Queue Heap2.txt");
+	PriorityQueueDynamicArray pq;
 
-	priorityQueue.Insert(10, 3);
-	priorityQueue.Insert(20, 1);
-	priorityQueue.Insert(30, 5);
-	priorityQueue.Insert(40, 2);
-	priorityQueue.Insert(50, 4);
-	priorityQueue.Insert(2000, 4);
+	// Insert 10 elements with priorities
+	pq.Insert(10, 2);
+	pq.Insert(20, 3);
+	pq.Insert(30, 1);
+	pq.Insert(40, 3);
+	pq.Insert(50, 2);
+	pq.Insert(60, 4);
+	pq.Insert(70, 4);
+	pq.Insert(80, 3);
+	pq.Insert(90, 1);
+	pq.Insert(100, 2);
 
-	priorityQueue.PrintAll();
+	// Print the initial priority queue
+	std::cout << "Initial Priority Queue:" << std::endl;
+	pq.PrintAll();
 
+	// Modify the key of an element
+	pq.ModifyKey(3, 4);
 
-	std::cout << "Peek: " << "Priority: " << priorityQueue.Peek().priority << ", Value: " << priorityQueue.Peek().value << std::endl;
+	// Print the priority queue after 1st modification
+	std::cout << "\nPriority Queue after 1st Modification:" << std::endl;
+	pq.PrintAll();
 
-	priorityQueue.ModifyKey(5, 1);
-	std::cout << "After modifying priority of element" << std::endl;
-	priorityQueue.PrintAll();
+	// Modify the key of another element
+	pq.ModifyKey(2, 5);
 
-	Element extracted = priorityQueue.ExtractMax();
-	std::cout << "Extracted max: " << "Priority: " << extracted.priority << ", Value: " << extracted.value << std::endl;*/
+	// Print the priority queue after 2nd modification
+	std::cout << "\nPriority Queue after 2nd Modification:" << std::endl;
+	pq.PrintAll();
 
-	//PriorityQueueHeap maxHeap;
+	// Modify the key of another element
+	pq.ModifyKey(4, 1);
 
-	//// Insert elements into the heap
-	//maxHeap.Insert(5, 50);
-	//maxHeap.Insert(3, 30);
-	//maxHeap.Insert(8, 80);
-	//maxHeap.Insert(2, 20);
-	//maxHeap.Insert(6, 60);
+	// Print the priority queue after 3rd modification
+	std::cout << "\nPriority Queue after 3rd Modification:" << std::endl;
+	pq.PrintAll();
 
-	////std::cout << "Heap size after insertion: " << maxHeap.GetSize() << std::endl;
-
-	//// Print all elements in the heap
-	//std::cout << "All elements in the heap:" << std::endl;
-	//maxHeap.PrintAll();
-
-	//// Extract the maximum element from the heap
-	//Element maxElement = maxHeap.ExtractMax();
-	//std::cout << "Extracted maximum element: Priority=" << maxElement.priority << ", Value=" << maxElement.value << std::endl;
-
-	//// Get the maximum element without removing it
-	//Element currentMax = maxHeap.Peek();
-	//std::cout << "Current maximum element: Priority=" << currentMax.priority << ", Value=" << currentMax.value << std::endl;
-
-	//// Print all elements in the heap after extraction
-	//std::cout << "Heap after extraction:" << std::endl;
-	//maxHeap.PrintAll();
-	//std::cout << std::endl;
-	//maxHeap.Insert(2, 60);
-	//maxHeap.PrintAll();
-	//std::cout << std::endl;
-	//maxHeap.Insert(5, 1);
-	//maxHeap.Insert(3, 2);
-	//maxHeap.Insert(8, 3);
-	//maxHeap.Insert(2, 100);
-	//maxHeap.Insert(6, 0);
-	//maxHeap.PrintAll();
-	//std::cout << std::endl;
-	//maxHeap.ModifyKey(1, 100);
-	//maxHeap.Insert(6, 1000);
-	//maxHeap.PrintAll();
-	//return 0;
+	pq.Insert(1, 1);
+	std::cout << "\nPriority Queue after another insertion:" << std::endl;
+	pq.PrintAll();
 }
 
