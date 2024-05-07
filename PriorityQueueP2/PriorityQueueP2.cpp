@@ -33,7 +33,7 @@ void Tests(PriorityQueueMax* queue, std::string fileName) {
 	}
 
 	int sizes[] = { 5000, 8000, 10000, 16000, 20000, 40000, 60000, 100000 };
-	int testCount = 50;
+	int testCount = 75;
 
 	const int min = 0;
 	const int max = 1000000;
@@ -115,7 +115,7 @@ void FastTests(PriorityQueueMax* queue, std::string fileName) {
 	}
 
 	int sizes[] = { 5000, 8000, 10000, 16000, 20000, 40000, 60000, 100000 };
-	int testCount = 50;
+	int testCount = 75;
 
 	const int min = 0;
 	const int max = 1000000;
@@ -198,9 +198,21 @@ void FastTests(PriorityQueueMax* queue, std::string fileName) {
 }
 
 
+
+std::string GetNameOfDataStructure(short choice) {
+	return choice == 1 ? "Priority queue based on dynamic array" : "Priority queue based on heap";
+}
+
+PriorityQueueMax* CreateEmpty(short choice) {
+	if (choice == 1) {
+		return new PriorityQueueDynamicArray();
+	}
+	return new PriorityQueueHeap();
+}
+
 int main()
 {
-	PriorityQueueDynamicArray* priorityQueue = new PriorityQueueDynamicArray;
+	/*PriorityQueueDynamicArray* priorityQueue = new PriorityQueueDynamicArray;
 	PriorityQueueHeap* priorityQueueHeap = new PriorityQueueHeap;
 	std::cout << "0/6" << std::endl;
 	FastTests(priorityQueue, "Fast Tests Priority Queue Dynamic Array1.txt");
@@ -223,8 +235,92 @@ int main()
 	std::cout << "6/6" << std::endl;
 
 	delete priorityQueue;
-	delete priorityQueueHeap;
+	delete priorityQueueHeap;*/
 
+	std::cout << "Select your data structure:" << std::endl;
+	std::cout << "1. Priority queue based on dynamic array" << std::endl;
+	std::cout << "2. Priority queue based on heap" << std::endl;
+
+	short chosedDataStructure = 0;
+
+	while (chosedDataStructure < 1 || chosedDataStructure > 2) {
+		std::cin >> chosedDataStructure;
+		std::cout << std::endl;
+	}
+	std::string structureName = GetNameOfDataStructure(chosedDataStructure);
+
+	std::cout << structureName << std::endl;
+
+	short selection = 0;
+
+	const int min = 0;
+	const int max = 1000000;
+	std::default_random_engine generator;
+	std::uniform_int_distribution<int> distribution(min, max);
+
+	PriorityQueueMax* queue = CreateEmpty(chosedDataStructure);
+	while (selection != 8) {
+		selection = 0;
+		std::cout << "1. Insert element" << std::endl;
+		std::cout << "2. Extract max" << std::endl;
+		std::cout << "3. Peek" << std::endl;
+		std::cout << "4. Modify Key" << std::endl;
+		std::cout << "5. Get Size" << std::endl;
+		std::cout << "6. Insert Random Elements" << std::endl;
+		std::cout << "7. Print All" << std::endl;
+		std::cout << "8. Exit" << std::endl;
+
+		while (selection < 1 || selection > 8) {
+			std::cin >> selection;
+			std::cout << std::endl;
+		}
+
+		int priority, value, oldPriority, newPriority, numberOfElements;
+		Element extracted;
+		switch (selection) {
+		case 1:
+			std::cout << "Provide Priority" << std::endl;
+			std::cin >> priority;
+			std::cout << "Provide value" << std::endl;
+			std::cin >> value;
+			queue->Insert(value, priority);
+			break;
+		case 2:
+			extracted = queue->ExtractMax();
+			std::cout << "Extracted priority " << extracted.priority << ", value " << extracted.value << std::endl;
+			break;
+		case 3:
+			std::cout << "Peeked priority " << queue->Peek().priority << ", value " << queue->Peek().value << std::endl;
+			break;
+		case 4:
+			std::cout << "Provide old priority" << std::endl;
+			std::cin >> oldPriority;
+			std::cout << "Provide new priority" << std::endl;
+			std::cin >> newPriority;
+			queue->ModifyKey(oldPriority, newPriority);
+			break;
+		case 5:
+			std::cout << queue->GetSize();
+			break;
+		case 6:
+			std::cout << "How many elements?" << std::endl;
+			std::cin >> numberOfElements;
+
+			for (int i = 0; i < numberOfElements; i++) {
+				queue->Insert(distribution(generator), distribution(generator));
+			}
+			break;
+		case 7:
+			queue->PrintAll();
+			break;
+		case 8 :
+			selection = 8;
+			break;
+		}
+	}
+	
+
+	
 	return 0;
 }
 

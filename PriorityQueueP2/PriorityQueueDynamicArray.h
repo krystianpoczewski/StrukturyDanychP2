@@ -20,6 +20,6 @@ public:
     void ModifyKey(int oldPriority, int newPriority) override;
     bool isEmpty() const override;
     int GetSize() const override;
-    void PrintAll();
+    void PrintAll() override;
     void Clear() override;
 };

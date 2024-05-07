@@ -22,4 +22,5 @@ public:
     virtual bool isEmpty() const = 0;
     virtual int GetSize() const = 0;
     virtual void Clear() = 0;
+    virtual void PrintAll() = 0;
 };
